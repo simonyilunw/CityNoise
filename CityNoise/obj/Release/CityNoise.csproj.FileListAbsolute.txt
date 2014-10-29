@@ -1,0 +1,6 @@
+C:\Users\v-yilwan\Dropbox\research\Ubicomp 2014\Demo\CityNoise\CityNoise\bin\CityNoise.dll.config
+C:\Users\v-yilwan\Dropbox\research\Ubicomp 2014\Demo\CityNoise\CityNoise\bin\CityNoise.dll
+C:\Users\v-yilwan\Dropbox\research\Ubicomp 2014\Demo\CityNoise\CityNoise\bin\CityNoise.pdb
+C:\Users\v-yilwan\Dropbox\research\Ubicomp 2014\Demo\CityNoise\CityNoise\obj\Release\CityNoise.csprojResolveAssemblyReference.cache
+C:\Users\v-yilwan\Dropbox\research\Ubicomp 2014\Demo\CityNoise\CityNoise\obj\Release\CityNoise.dll
+C:\Users\v-yilwan\Dropbox\research\Ubicomp 2014\Demo\CityNoise\CityNoise\obj\Release\CityNoise.pdb

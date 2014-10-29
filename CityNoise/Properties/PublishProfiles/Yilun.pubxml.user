@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAT3abwHlAA0ORvBtopiRorAAAAAACAAAAAAADZgAAwAAAABAAAAAbqf+H4efQUnXSu8rh9bVMAAAAAASAAACgAAAAEAAAAINj4pkcqcgb4q3lcziQ6hQoAAAAGAwdzZFbfYNbnyf177AOlwoyuwie40b5E6cwnOThI3+k2hTrsOxNfRQAAACLGafiQIM5XSepjy6bDx+PvJIhgA==</EncryptedPassword>
+    <_PublishTargetUrl>http://localhost/citynoise</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/CityNoise.dll">
+      <publishTime>05/10/2014 20:46:19</publishTime>
+    </File>
+    <File Include="bootstrap-slider.js">
+      <publishTime>04/21/2014 21:28:08</publishTime>
+    </File>
+    <File Include="cn.js">
+      <publishTime>05/10/2014 20:48:28</publishTime>
+    </File>
+    <File Include="getFeature.aspx">
+      <publishTime>05/09/2014 14:10:16</publishTime>
+    </File>
+    <File Include="getTensor.aspx">
+      <publishTime>04/27/2014 20:18:16</publishTime>
+    </File>
+    <File Include="images/NYC.jpg">
+      <publishTime>04/29/2014 12:41:35</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>04/29/2014 13:42:14</publishTime>
+    </File>
+    <File Include="slider.css">
+      <publishTime>02/18/2013 23:26:43</publishTime>
+    </File>
+    <File Include="slider.less">
+      <publishTime>02/18/2013 23:26:09</publishTime>
+    </File>
+    <File Include="tensorData/B.txt">
+      <publishTime>05/09/2014 14:08:40</publishTime>
+    </File>
+    <File Include="tensorData/D_weekday.txt">
+      <publishTime>05/10/2014 20:19:18</publishTime>
+    </File>
+    <File Include="tensorData/D_weekend.txt">
+      <publishTime>05/10/2014 20:20:05</publishTime>
+    </File>
+    <File Include="tensorData/RM.txt">
+      <publishTime>04/27/2014 20:26:22</publishTime>
+    </File>
+    <File Include="tensorData/weekday.txt">
+      <publishTime>04/24/2014 21:51:24</publishTime>
+    </File>
+    <File Include="tensorData/weekend.txt">
+      <publishTime>04/24/2014 21:52:55</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/21/2014 19:56:19</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

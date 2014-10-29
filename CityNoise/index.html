@@ -1,0 +1,124 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>CityNoise</title>
+    <meta http-equiv="x-ua-compatible" content="ie=10" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+    <script src="cn.js"></script>
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="bootstrap-slider.js"></script>
+    <link href="slider.css" rel="stylesheet" />
+    
+    
+</head>
+<body onload="getMap()">
+    <div id='myMap'></div>
+    <div  style="position: fixed; width: 400px; z-index: 10; height: 100%; background-color: white;  border-right: 1px solid #686868;">
+      
+            <div style="background-image:url(images/NYC.jpg); height:110px; margin-top:-20px; text-align:center; padding-top:24px;"><h1 style="color:white;">New York City's Noise</h1></div>
+            <div class="well" style="width: 380px; margin-left: 9px; margin-top: 10px; padding-top: 8px; padding-bottom: 8px;" >
+            
+
+                <center><label>Data Panel</label></center>
+
+                <div class="dropdown" >
+                    <button type="button" class="btn btn-primary dropdown-toggle" id="weekButton" style="width:180px;" data-toggle="dropdown">
+                        Weekday
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" style="width:180px; text-align:center;">
+                        <li><a href="#" onclick="weekChoice(0, this)">Weekday</a></li>
+                        <li><a href="#" onclick="weekChoice(1, this)">Weekend</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="dropdown" style="margin-top:10px; float:left;">
+                        <button type="button" id="categoryButton" class="btn btn-primary dropdown-toggle" style="width:180px;" data-toggle="dropdown">
+                            All Categories
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" style="width: 180px; text-align: center;">
+                            <li><a onclick="dropdownChoice(0, this)">All Categories</a></li>
+                            <li><a onclick="dropdownChoice(1, this)">Loud Music / Party</a></li>
+                            <li><a onclick="dropdownChoice(6, this)">Construction</a></li>
+                            <li><a onclick="dropdownChoice(2, this)">Loud Talking</a></li>
+                            <li><a onclick="dropdownChoice(4, this)">Vehicle</a></li>
+                            <li><a onclick="dropdownChoice(8, this)">AC / Ventilation</a></li>
+                            <li><a onclick="dropdownChoice(3, this)">Banging / Pounding</a></li>
+                            <li><a onclick="dropdownChoice(11, this)">Jack Hammering</a></li>
+                            <li><a onclick="dropdownChoice(9, this)">Alarms</a></li>
+                            <li><a onclick="dropdownChoice(13, this)">Private Carting Noise</a></li>
+                            <li><a onclick="dropdownChoice(7, this)">Manufacturing</a></li>
+                            <li><a onclick="dropdownChoice(12, this)">Lawn Care Equipment</a></li>
+                            <li><a onclick="dropdownChoice(10, this)">Horn Honking</a></li>
+                            <li><a onclick="dropdownChoice(5, this)">Loud Television</a></li>
+                            <li><a onclick="dropdownChoice(14, this)">Others</a></li>
+                        </ul>
+                    </div>
+                    <input type="checkbox" id="noiseCheckBox" checked="checked" style="margin-top:22px;margin-left:40px;" onchange="checkboxChange()" /><label style="margin-left:5px;">Noise Layer</label>
+                </div>
+         </div>
+            <div class="well" style="width:380px; margin-left:9px; margin-top:-10px; padding-top:8px; padding-bottom:8px;">
+                <!--<label id="sliderLabel">Current Hour: 8:00</label>-->
+                <center><label>Time Panel</label></center>
+                <canvas width="356" height="100" style="border: 1px solid #d3d3d3; margin-left:-8px;" id="timeCanvas"></canvas>
+                    
+                    <input style="width:340px;" type="text" id="myslider" class="span2" value = "" data-slider-min="0" data-slider-max="23" data-slider-step="1" data-slider-value="8" data-slider-selection="after" data-slider-tooltip="show" />
+                
+                <div >
+                    <button type="button" class="btn btn-danger" onclick="playWholeDay()"><span class="glyphicon glyphicon-play"></span></button>
+                    <button type="button" class="btn btn-danger" onclick="stopPlay()" ><span class="glyphicon glyphicon-stop"></span></button>
+                    <input type="checkbox" id="timeCheckBox" style="margin-top:5px;margin-left:132px;" onchange="timecheckboxChange()" /><label style="margin-left:5px;">Overall Time</label>
+                </div>
+            </div>
+            <center><label style="margin-top: -10px;">Top 5 Noisiest Regions</label></center>
+            <div class="list-group" style="width: 380px; margin-left: 9px;">
+                <a class="list-group-item" id="regionlist1" style="height: 34px; line-height: 12px;" onclick="clickRegionList(1)"></a>
+                <a class="list-group-item" id="regionlist2" style="height: 34px; line-height: 12px;" onclick="clickRegionList(2)"></a>
+                <a class="list-group-item" id="regionlist3" style="height: 34px; line-height: 12px;" onclick="clickRegionList(3)"></a>
+                <a class="list-group-item" id="regionlist4" style="height: 34px; line-height: 12px;" onclick="clickRegionList(4)"></a>
+                <a class="list-group-item" id="regionlist5" style="height: 34px; line-height: 12px;" onclick="clickRegionList(5)"></a>
+            </div>
+        
+            <div class="well" style="width: 380px; margin-left: 9px; margin-top: -10px; padding-top: 8px; padding-bottom: 8px;">
+                <center><label id="regionCanvasLabel">Region Noise Analysis</label></center>
+                <canvas width="356" height="100" style="border: 1px solid #d3d3d3; margin-left: -8px;" id="regionCanvas"></canvas>
+                <p style=" margin-left:-4px; height:6px;"><label style="width:25px;">0</label> <label style="width:25px;">2</label> <label style="width:26px;">4</label> <label style="width:26px;">6</label> <label style="width:22px;">8</label> <label style="width:25px;">10</label> <label style="width:25px;">12</label> <label style="width:26px;">14</label> <label style="width:25px;">16</label> <label style="width:26px;">18</label> <label style="width:25px;">20</label> <label style="width:10px;">22</label></p>
+                <label style="color:red;" id="categoryLabel1"></label><label style="color:purple;" id="categoryLabel2"></label><label style="color:orange;" id="categoryLabel3">
+</label><label style="color:grey;" id="categoryLabel4"></label><label style="color: #25E82C;" id="categoryLabel5"></label>
+            </div>
+        <div style="width: 380px; margin-left: 9px; margin-top: -10px; font-size:10px;"><center> This demo is based on 311 data from May 23, 2013 to Jan. 31, 2014.</center></div>
+     </div>
+  
+
+    <div id="compareList" style="position: fixed; display:none; right: 0px; top: 150px; width: 200px; z-index: 10;  background-color: white; border-left: 1px solid #686868; border-top: 1px solid #686868; border-bottom: 1px solid #686868; "></div>
+    <div id="colorBar" style="position: fixed;  right: 0px; bottom: 50px; width: 60px; height: 350px;z-index: 10;  ">
+        <canvas width="60" height="350" id="colorBarCanvas"  ></canvas>
+    </div>
+    <!-- <div style="position: absolute; bottom: 20px; margin-left: 300px; ">        </div>-->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 10000; " >
+        <div class="modal-dialog" style="width:860px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"  aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body" id="compareBoxContent">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
